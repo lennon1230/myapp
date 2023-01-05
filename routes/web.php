@@ -16,9 +16,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/users', function(){
-    return 'Nada';
-})->name('users.index');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/users', function(){
+        return 'Nada';
+    })->name('users.index');
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
